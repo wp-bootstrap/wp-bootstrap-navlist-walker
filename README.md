@@ -1,9 +1,11 @@
-wp-bootstrap-navlist-walker
-===========================
+# wp-bootstrap-navlist-walker
+
+[![Code Climate](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker/badges/gpa.svg)](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker)
+[![Test Coverage](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker/badges/coverage.svg)](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker/coverage)
+[![Issue Count](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker/badges/issue_count.svg)](https://codeclimate.com/github/wp-bootstrap/wp-bootstrap-navlist-walker)
 
 **Custom list navigation for WordPress themes utilizing the Bootstrap framework. The package includes a custom walker class & Less file with mixins.**
 
-![.nav-list-success](http://edwardmcintyre.com/pub/github/nav-list/nav-list-success-inverse.jpg)
 
 **Walker Class Features**
 + Structures menu HTML in a Bootstrap format
@@ -17,12 +19,10 @@ wp-bootstrap-navlist-walker
 + 12 Included color schemes
 + Mixin to quickly create custom color schemes
 
-NOTE
-----
-This is a utility class that is intended to format your WordPress theme menu with the correct syntax and classes to utilize the Bootstrap navigation, and does not include the required Bootstrap JS files. You will have to include them manually. 
+** This is a utility class that is intended to format your WordPress theme menu with the correct syntax and classes to utilize the Bootstrap navigation, and does not include the required Bootstrap JS files. You will have to include them manually. **
 
-Installation
-------------
+## Installation
+
 Place **wp_bootstrap_navlist_walker.php** in your WordPress theme folder `/wp-content/your-theme/`
 
 Open your WordPress themes **functions.php** file  `/wp-content/your-theme/functions.php` and add the following code:
@@ -32,8 +32,8 @@ Open your WordPress themes **functions.php** file  `/wp-content/your-theme/funct
 require_once('wp_bootstrap_navlist_walker.php');
 ```
 
-Usage
-------------
+## Usage
+
 Update your `wp_nav_menu()` function in `header.php` to use the new walker by adding a "walker" item to the wp_nav_menu array.
 
 ```php
@@ -60,70 +60,64 @@ register_nav_menus( array(
 ) );
 ```
 
-Displaying the Menu 
--------------------
+## Displaying the Menu 
+
 To display the menu you must associate your menu with your theme location. You can do this by selecting your theme location in the *Theme Locations* list wile editing a menu in the WordPress menu manager.
 
-Glyphicons
-------------
+## Glyphicons
+
 To add an Icon to your link simple place the Glyphicon class name in the links **Title Attribute** field and the class will do the rest. IE `glyphicon-bullhorn`
 
-![Header Example](http://edwardmcintyre.com/pub/github/navwalker-3-glyphicons.jpg)
 
-Disabled Links
-------------
+## Disabled Links
+
 To set a disabled link simply set the **Title Attribute** to `disabled` and the class will do the rest. 
 
-![Header Example](http://edwardmcintyre.com/pub/github/navwalker-3-disabled.jpg)
 
-LESS Style
-==========
+## LESS Style
+
 The included nav-list.less comes with 12 menus styles, and a bunch of handy custom LESS mixins to make generating your own styles quick and easy. 
 
-Included Styles
-------------
+### Included Styles
+
 To switch out styles simply add the desired css classes to you `wp_nav_menu` declarations `menu_class` variable.
 
 `'menu_class' => 'nav nav-list-inverse nav-list-info'`
 
 **.nav-list**    
-![.nav-list](http://edwardmcintyre.com/pub/github/nav-list/nav-list.jpg)
+
 
 **.nav-list-primary**    
-![.nav-list-primary](http://edwardmcintyre.com/pub/github/nav-list/nav-list-primary.jpg)
+
 
 **.nav-list-success**    
-![.nav-list-success](http://edwardmcintyre.com/pub/github/nav-list/nav-list-success.jpg)
+
 
 **.nav-list-warning**    
-![.nav-list-warning](http://edwardmcintyre.com/pub/github/nav-list/nav-list-warning.jpg)
+
 
 **.nav-list-info**    
-![.nav-list-info](http://edwardmcintyre.com/pub/github/nav-list/nav-list-info.jpg)
+
 
 **.nav-list-danger**    
-![.nav-list-danger](http://edwardmcintyre.com/pub/github/nav-list/nav-list-danger.jpg)
+
 
 **.nav-list-inverse**    
-![.nav-list](http://edwardmcintyre.com/pub/github/nav-list/nav-list-inverse.jpg)
+
 
 **.nav-list-inverse .nav-list-primary**    
-![.nav-list-primary](http://edwardmcintyre.com/pub/github/nav-list/nav-list-primary-inverse.jpg)
+
 
 **.nav-list-inverse .nav-list-success**    
-![.nav-list-success](http://edwardmcintyre.com/pub/github/nav-list/nav-list-success-inverse.jpg)
 
 **.nav-list-inverse .nav-list-warning**    
-![.nav-list-warning](http://edwardmcintyre.com/pub/github/nav-list/nav-list-warning-inverse.jpg)
 
 **.nav-list-inverse .nav-list-info**    
-![.nav-list-info](http://edwardmcintyre.com/pub/github/nav-list/nav-list-info-inverse.jpg)
 
 **.nav-list-inverse .nav-list-danger**    
-![.nav-list-danger](http://edwardmcintyre.com/pub/github/nav-list/nav-list-danger-inverse.jpg)
 
-Custom Styles
-------------
+### Custom Styles
+
 The included LESS file includes some powerful mixins that make creating a custom style incredibly simple. At it's simplest you can create a custom style by using the `.generate-nav-list` mixin and passing a single color.
 
 ```css
@@ -146,8 +140,8 @@ Here is a rundown of all of the `.generate-nav-list()` variables.
 **@border-radius** - *Default: @border-radius-base* - The menus border radius in pixels.
 
 
-Affix & Scrollspy
-=================
+## Affix & Scrollspy
+
 wp-bootstrap-navlist-walker is setup to support Bootstrap's Affix & Scrollspy javascript. 
 
 If you have the Bootstrap Affix javascript loaded you can affix the menu by wrapping it in a `<div>` in including the appropriate data attributes. Visit http://getbootstrap.com/javascript/#affix for more info.
@@ -170,10 +164,9 @@ If you have the Bootstrap Affix javascript loaded you can affix the menu by wrap
 
 If you have the Bootstrap Scrollspy javascript loaded you can Scrollspy the sub menu items by following the steps at http://getbootstrap.com/javascript/#scrollspy and spying the `#nav-sublist` ID.
 
-Changelog
-------------
+## Changelog
+
 **1.0**
 + Initial Class
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/twittem/wp-bootstrap-navlist-walker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
