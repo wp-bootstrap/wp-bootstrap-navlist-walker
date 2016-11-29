@@ -20,18 +20,21 @@
 	 */
 
 /**
- * wp_bootstrap_navlist_walker class.
+ * WP Bootstrap Navlist Walker.
  *
  * @extends Walker_Nav_Menu
  */
-class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
+class WP_Bootstrap_Navlist_Walker extends Walker_Nav_Menu {
 
 	/**
-	 * @see Walker::start_lvl()
-	 * @since 3.0.0
+	 * See Walker: start_lvl function.
 	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int    $depth Depth of page. Used for padding.
+	 * @since 3.0.0
+	 * @access public
+	 * @param mixed $output  Passed by reference. Used to append additional content.
+	 * @param int   $depth (default: 0) Depth of page. Used for padding.
+	 * @param array $args (default: array()) An array of arguments. See wp_nav_menu.
+	 * @return void
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -39,15 +42,13 @@ class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * Ends the list of after the elements are added.
+	 * See Walker: end_lvl function.
 	 *
-	 * @see Walker::end_lvl()
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int    $depth  Depth of menu item. Used for padding.
-	 * @param array  $args   An array of arguments. @see wp_nav_menu()
+	 * @access public
+	 * @param mixed $output Passed by reference. Used to append additional content.
+	 * @param int   $depth (default: 0) Depth of menu item. Used for padding.
+	 * @param array $args (default: array()) An array of arguments. See wp_nav_menu.
+	 * @return void
 	 */
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -113,15 +114,14 @@ class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
 	/**
 	 * Traverse elements to create list from elements.
 	 *
-	 * @see Walker::start_el()
+	 * @access public
 	 * @since 2.5.0
-	 *
-	 * @param object $element Data object.
-	 * @param array  $children_elements List of elements to continue traversing.
-	 * @param int    $max_depth Max depth to traverse.
-	 * @param int    $depth Depth of current element.
-	 * @param array  $args
-	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param mixed $element Data object.
+	 * @param mixed $children_elements List of elements to continue traversing.
+	 * @param mixed $max_depth Max depth to traverse.
+	 * @param mixed $depth Depth of current element.
+	 * @param mixed $args Arguments.
+	 * @param mixed $output Passed by reference. Used to append additional content.
 	 * @return null Null on failure with no changes to parameters.
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
@@ -129,7 +129,7 @@ class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
 			return;
 		}
 
-		// If parent is not current item, don't output children
+		// If parent is not current item, don't output children.
 		if ( ! $element->current ) {
 			parent::unset_children( $element, $children_elements );
 		}
@@ -150,43 +150,32 @@ class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
 	public static function fallback( $args ) {
 		if ( current_user_can( 'manage_options' ) ) {
 
-			extract( $args );
-
-			$output = null;
-
+				/* Get Arguments. */
+				$container = $args['container'];
+				$container_id = $args['container_id'];
+				$container_class = $args['container_class'];
+				$menu_class = $args['menu_class'];
+				$menu_id = $args['menu_id'];
 			if ( $container ) {
-				$output = '<' . $container;
-
+				echo '<' . esc_attr( $container );
 				if ( $container_id ) {
-					$output .= ' id="' . $container_id . '"';
+					echo ' id="' . esc_attr( $container_id ) . '"';
 				}
-
 				if ( $container_class ) {
-					$output .= ' class="' . $container_class . '"';
-				}
-
-				$output .= '>';
+					echo ' class="' . sanitize_html_class( $container_class ) . '"'; }
+				echo '>';
 			}
-
-			$output .= '<ul';
-
+				echo '<ul';
 			if ( $menu_id ) {
-				$output .= ' id="' . $menu_id . '"';
-			}
-
+				echo ' id="' . esc_attr( $menu_id ) . '"'; }
 			if ( $menu_class ) {
-				$output .= ' class="' . $menu_class . '"';
-			}
-
-			$output .= '>';
-			$output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
-			$output .= '</ul>';
-
+				echo ' class="' . esc_attr( $menu_class ) . '"'; }
+				echo '>';
+				echo '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_attr( 'Add a menu', '' ) . '</a></li>';
+				echo '</ul>';
 			if ( $container ) {
-				$output .= '</' . $container . '>';
+				echo '</' . esc_attr( $container ) . '>';
 			}
-
-			echo $output;
 		}
 	}
 }
