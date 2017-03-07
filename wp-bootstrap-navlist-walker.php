@@ -6,12 +6,13 @@
  */
 
 	/**
-	 * Class Name: wp_bootstrap_navlist_walker
+	 * Class Name: WP Bootstrap Navlist Walker
 	 * Plugin Name: WP Bootstrap Navlist Walker
 	 * Plugin URI: https://github.com/wp-bootstrap/wp-bootstrap-navlist-walker
 	 * Description: A custom WordPress nav walker class to implement the Bootstrap 3 navigation style in a custom theme using the WordPress built in menu manager.
 	 * Version: 1.0.0
-	 * Author: Edward McIntyre - @twittem, Brandon Hubbard
+	 * Author: WP-Bootstrap
+	 * Author URI: https://github.com/wp-bootstrap
 	 * GitHub URI: https://github.com/wp-bootstrap/wp-bootstrap-navlist-walker
 	 * GitHub Plugin URI: https://github.com/wp-bootstrap/wp-bootstrap-navlist-walker
 	 * GitHub Branch: master
