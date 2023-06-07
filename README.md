@@ -23,9 +23,9 @@
 
 ## Installation
 
-Place **wp_bootstrap_navlist_walker.php** in your WordPress theme folder `/wp-content/your-theme/`
+Place **wp_bootstrap_navlist_walker.php** in your WordPress theme folder `/wp-content/theme/your-theme/`
 
-Open your WordPress themes **functions.php** file  `/wp-content/your-theme/functions.php` and add the following code:
+Open your WordPress themes **functions.php** file  `/wp-content/theme/your-theme/functions.php` and add the following code:
 
 ```php
 // Register Custom Navigation Walker
